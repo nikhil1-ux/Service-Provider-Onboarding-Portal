@@ -1,28 +1,41 @@
-import multer from "multer";
+import ApiError from "../utils/ApiError.js";
 
-const storage = multer.memoryStorage();
-
-const fileFilter = (req, file, cb) => {
-  const allowed = [
-    "image/jpeg",
-    "image/png",
-    "image/webp",
-    "application/pdf",
-  ];
-
-  if (allowed.includes(file.mimetype)) {
-    cb(null, true);
-  } else {
-    cb(new Error("Only JPEG, PNG, WEBP images or PDF files are allowed"));
+const errorHandler = (err, req, res, next) => {
+  if (err instanceof ApiError) {
+    return res.status(err.statusCode).json({
+      success: false,
+      message: err.message,
+      errors: err.errors,
+    });
   }
+
+  // Mongoose duplicate key
+  if (err.code === 11000) {
+    const field = Object.keys(err.keyValue)[0];
+
+    return res.status(409).json({
+      success: false,
+      message: `${field} already exists`,
+    });
+  }
+
+  // Mongoose validation error
+  if (err.name === "ValidationError") {
+    const errors = Object.values(err.errors).map((e) => e.message);
+
+    return res.status(400).json({
+      success: false,
+      message: "Validation failed",
+      errors,
+    });
+  }
+
+  console.error(err);
+
+  return res.status(500).json({
+    success: false,
+    message: err.message || "Internal Server Error",
+  });
 };
 
-const upload = multer({
-  storage,
-  fileFilter,
-  limits: {
-    fileSize: 5 * 1024 * 1024, // 5 MB
-  },
-});
-
-export default upload;
+export default errorHandler;
