@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import api from "../../api/axios";
-import Navbar from "../../components/Navbar";
-import StatusBadge from "../../components/StatusBadge";
+import api from "../api/axios.js";
+import Navbar from "../components/Navbar";
+import StatusBadge from "../components/StatusBadge";
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState(null);

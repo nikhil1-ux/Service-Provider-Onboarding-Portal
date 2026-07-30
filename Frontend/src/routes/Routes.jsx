@@ -3,10 +3,10 @@ import { useAuth } from "../context/AuthContext";
 
 import ProtectedRoute from "./ProtectedRoute.jsx";
 
-import Login from "../pages/Login";
-import Register from "../pages/Register";
-import ProviderDashboard from "../pages/provider/ProviderDashboard";
-import AdminDashboard from "../pages/admin/AdminDashboard";
+import Login from "../pages/Login.jsx";
+import Register from "../pages/Register.jsx";
+import ProviderDashboard from "../pages/Provider.jsx";
+import AdminDashboard from "../pages/Admin.jsx";
 
 
 const Home = () => {

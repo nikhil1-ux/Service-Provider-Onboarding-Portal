@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import api from "../../api/axios";
-import { useAuth } from "../../context/AuthContext";
-import Navbar from "../../components/Navbar";
-import StatusBadge from "../../components/StatusBadge";
+import api from "../api/axios.js";
+import { useAuth } from "../context/AuthContext.jsx";
+import Navbar from "../components/Navbar.jsx";
+import StatusBadge from "../components/StatusBadge.jsx";
 
 const CATEGORY_OPTIONS = [
   "Plumbing",
