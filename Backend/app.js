@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 
 import authRoutes from "./routes/auth.routes.js";
 import providerRoutes from "./routes/provider.routes.js";
-import adminRoutes from "./routes/admin.routes.js";
+import adminRoutes from "./routes/admin.router.js";
 import errorHandler from "./middlewares/error.middleware.js";
 
 const app = express();
