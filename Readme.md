@@ -1,189 +1,372 @@
-# Service Provider Onboarding Portal
+# 🚀 Service Provider Onboarding Portal
 
-A full-stack **MERN** application that digitizes the onboarding process for service providers — similar in spirit to platforms like Urban Company or ExtraHand. Service providers can register, build out their profile, upload verification documents, and track their application status, while admins can review, approve, or reject applications from a dedicated dashboard.
+<p align="center">
 
-**Live demo:** https://service-provider-onboarding-portal-five.vercel.app
+![React](https://img.shields.io/badge/React-19-blue?logo=react)
+![NodeJS](https://img.shields.io/badge/Node.js-Express-green?logo=node.js)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-brightgreen?logo=mongodb)
+![JWT](https://img.shields.io/badge/Auth-JWT-orange)
+![License](https://img.shields.io/badge/License-MIT-blue)
 
----
+</p>
 
-## Table of Contents
+A **full-stack MERN application** that streamlines the onboarding process for service providers similar to platforms like **Urban Company**.
 
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Environment Variables](#environment-variables)
-- [Running the App](#running-the-app)
-- [API Overview](#api-overview)
-- [Screenshots](#screenshots)
-- [Demo Video](#demo-video)
-- [Roadmap / Bonus Features](#roadmap--bonus-features)
-- [License](#license)
+The platform enables providers to register, complete their profiles, upload verification documents, and track their application status. Administrators can efficiently review applications, verify documents, approve or reject providers, and monitor platform statistics through a dedicated dashboard.
 
 ---
 
-## Features
+# 🌐 Live Demo
 
-### Service Provider
-- Register & Login (JWT-based authentication)
-- Complete profile setup
-- Select service categories
-- Add skills & experience
-- Add service location
-- Upload profile photo & verification documents
-- View real-time application status
-- Edit profile before approval
+### Frontend
 
-### Admin
-- Secure admin login
-- View all registered providers
-- Search & filter providers
-- View uploaded documents
-- Approve / reject applications
-- Add rejection remarks
-- View dashboard statistics
+https://service-provider-onboarding-portal-five.vercel.app
 
-### Platform-wide
-- Role-based access control (Admin / Provider)
-- Protected routes on frontend & backend
-- Pagination on listing views
-- Form validation (client & server side)
-- File upload handling
-- Modular, scalable folder structure
-- Centralized error handling
-- Responsive UI across devices
+### Backend API
+
+https://service-provider-onboarding-portal.onrender.com
 
 ---
 
-## Tech Stack
+# 🎥 Demo Video
 
-| Layer            | Technology                                  |
-|-------------------|----------------------------------------------|
-| Frontend          | React                                        |
-| Backend           | Node.js, Express                             |
-| Database          | MongoDB (Mongoose ODM)                       |
-| Authentication    | JWT (JSON Web Tokens)                        |
-| File Uploads      | Multer (or equivalent middleware)            |
-| API Style         | REST                                         |
-| Deployment        | Vercel (Frontend) / Render / Railway (Backend)|
-
----
-
-## Project Structure
+> Add your Loom or YouTube video here
 
 ```
-Service-Provider-Onboarding-Portal/
-├── Backend/                 # Express server, REST APIs, MongoDB models
-│   ├── src/ or root files   # controllers, routes, models, middleware, config
-│   ├── .env.example
+https://your-demo-video-link
+```
+
+---
+
+# ✨ Features
+
+## 👨‍🔧 Service Provider
+
+* Secure Registration & Login
+* JWT Authentication
+* Complete Professional Profile
+* Upload Profile Picture
+* Upload Verification Documents
+* Add Skills & Experience
+* Choose Service Categories
+* Service Location Management
+* Track Application Status
+* Edit Profile Before Approval
+
+---
+
+## 👨‍💼 Admin Panel
+
+* Secure Admin Authentication
+* Dashboard Statistics
+* Search Providers
+* Filter Applications
+* View Uploaded Documents
+* Approve Applications
+* Reject Applications
+* Add Rejection Remarks
+* Manage Provider Profiles
+
+---
+
+## 🔐 Security
+
+* JWT Authentication
+* Protected Routes
+* Role-Based Access Control
+* Password Hashing
+* Input Validation
+* Error Handling Middleware
+
+---
+
+# 🛠 Tech Stack
+
+| Category       | Technology          |
+| -------------- | ------------------- |
+| Frontend       | React, React Router |
+| Backend        | Node.js, Express.js |
+| Database       | MongoDB + Mongoose  |
+| Authentication | JWT                 |
+| File Upload    | Multer              |
+| Styling        | CSS                 |
+| API            | REST API            |
+| Deployment     | Vercel, Render      |
+
+---
+
+# 📂 Project Structure
+
+```text
+Service-Provider-Onboarding-Portal
+│
+├── Backend
+│   ├── controllers
+│   ├── routes
+│   ├── middleware
+│   ├── models
+│   ├── config
+│   ├── utils
+│   ├── app.js
+│   ├── server.js
 │   └── package.json
-├── Frontend/                # React application
-│   ├── src/                 # components, pages, services, context/hooks
-│   ├── .env.example
+│
+├── Frontend
+│   ├── src
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── context
+│   │   ├── hooks
+│   │   ├── services
+│   │   └── assets
 │   └── package.json
+│
 └── README.md
 ```
 
-> Note: Exact internal folder names may vary — see each subfolder for its own structure.
-
 ---
 
-## Getting Started
+# ⚙️ Installation
 
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (v18+ recommended)
-- [MongoDB](https://www.mongodb.com/) (local instance or MongoDB Atlas)
-- npm or yarn
-
-### Clone the repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/nikhil1-ux/Service-Provider-Onboarding-Portal.git
+
 cd Service-Provider-Onboarding-Portal
 ```
 
-### Install dependencies
+---
+
+## Install Backend
 
 ```bash
-# Backend
 cd Backend
-npm install
 
-# Frontend
-cd ../Frontend
 npm install
 ```
 
 ---
 
-## Environment Variables
+## Install Frontend
 
-Create a `.env` file in both `Backend/` and `Frontend/` based on the provided `.env.example` files.
+```bash
+cd ../Frontend
 
-**Backend/.env**
+npm install
+```
+
+---
+
+# 🔑 Environment Variables
+
+## Backend (.env)
+
 ```env
 PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
-JWT_EXPIRES_IN=7d
-CLIENT_URL=http://localhost:3000
-# Add file upload / cloud storage keys if applicable (e.g. Cloudinary)
-```
 
-**Frontend/.env**
-```env
-VITE_API_BASE_URL=http://localhost:5000/api
-```
+MONGODB_URI=your_database_url
 
-> Update variable names above to match your actual `.env.example` files if they differ.
+JWT_SECRET=your_secret
+
+JWT_EXPIRY=7d
+
+CLIENT_URL=http://localhost:5173
+```
 
 ---
 
-## Running the App
+## Frontend (.env)
 
-### Start the backend
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+---
+
+# ▶️ Run Locally
+
+### Backend
 
 ```bash
 cd Backend
+
 npm run dev
 ```
 
-### Start the frontend
+Backend runs at
+
+```
+http://localhost:5000
+```
+
+---
+
+### Frontend
 
 ```bash
 cd Frontend
-npm start
+
+npm run dev
 ```
 
-The frontend will typically run on `http://localhost:3000` and the backend API on `http://localhost:5000`.
+Frontend runs at
+
+```
+http://localhost:5173
+```
 
 ---
 
-## API Overview
+# 📡 API Endpoints
 
-All endpoints are prefixed with `/api`.
+## Authentication
 
-| Module        | Example Endpoints                                              |
-|----------------|------------------------------------------------------------------|
-| Auth           | `POST /api/auth/register`, `POST /api/auth/login`               |
-| Provider       | `GET /api/providers/me`, `PUT /api/providers/me`, `POST /api/providers/documents` |
-| Admin          | `GET /api/admin/providers`, `PUT /api/admin/providers/:id/approve`, `PUT /api/admin/providers/:id/reject` |
-| Dashboard      | `GET /api/admin/stats`                                          |
-
-
-
-## Roadmap / Bonus Features
-
-- [ ] Email notifications on status change
-- [ ] Google OAuth login
-- [ ] Docker support
-- [ ] Swagger API documentation
-- [ ] Dark mode
-- [x] Deployment (frontend live on Vercel)
+| Method | Endpoint             |
+| ------ | -------------------- |
+| POST   | `/api/auth/register` |
+| POST   | `/api/auth/login`    |
+| GET    | `/api/auth/profile`  |
 
 ---
 
-## License
+## Provider
 
-This project was built as part of a MERN Stack Intern Assignment and is available for learning and reference purposes.
+| Method | Endpoint                      |
+| ------ | ----------------------------- |
+| GET    | `/api/provider/profile`       |
+| PUT    | `/api/provider/profile`       |
+| POST   | `/api/provider/photo`         |
+| POST   | `/api/provider/documents`     |
+| DELETE | `/api/provider/documents/:id` |
+| POST   | `/api/provider/submit`        |
+| GET    | `/api/provider/status`        |
+
+---
+
+## Admin
+
+| Method | Endpoint                           |
+| ------ | ---------------------------------- |
+| GET    | `/api/admin/dashboard`             |
+| GET    | `/api/admin/providers`             |
+| GET    | `/api/admin/providers/:id`         |
+| PUT    | `/api/admin/providers/:id/approve` |
+| PUT    | `/api/admin/providers/:id/reject`  |
+
+---
+
+# 📸 Screenshots
+
+## Home Page
+
+```md
+![Home](assets/home.png)
+```
+
+---
+
+## Login
+
+```md
+![Login](assets/login.png)
+```
+
+---
+
+## Provider Dashboard
+
+```md
+![Dashboard](assets/dashboard.png)
+```
+
+---
+
+## Admin Dashboard
+
+```md
+![Admin](assets/admin-dashboard.png)
+```
+
+---
+
+## Application Status
+
+```md
+![Status](assets/status.png)
+```
+
+---
+
+# 🔄 Application Workflow
+
+```text
+Register
+      │
+      ▼
+Login
+      │
+      ▼
+Complete Profile
+      │
+      ▼
+Upload Documents
+      │
+      ▼
+Submit Application
+      │
+      ▼
+Admin Review
+      │
+ ┌────┴────┐
+ │         │
+ ▼         ▼
+Approved  Rejected
+```
+
+---
+
+# 🚀 Future Improvements
+
+* Email Notifications
+* Google OAuth
+* Docker Support
+* Swagger Documentation
+* Dark Mode
+* Cloud Storage Integration
+* Real-Time Notifications
+* Admin Analytics
+* Audit Logs
+
+---
+
+# 💡 Highlights
+
+* Clean MVC Architecture
+* RESTful API Design
+* Scalable Folder Structure
+* Reusable Components
+* Secure Authentication
+* Responsive User Interface
+* Centralized Error Handling
+* Production Deployment
+
+---
+
+# 👨‍💻 Author
+
+**Nikhil Yadav**
+
+GitHub
+
+https://github.com/nikhil1-ux
+
+LinkedIn
+
+https://linkedin.com/in/nikhilyadav-dev
+
+---
+
+# 📜 License
+
+This project was developed as part of a **MERN Stack Internship Assignment** and is intended for learning, demonstration, and portfolio purposes.
