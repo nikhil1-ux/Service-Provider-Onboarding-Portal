@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import api from "../api/axios";
+import api, { setAccessToken } from "../api/axios";
 
 const AuthContext = createContext(null);
 
@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data.data);
     } catch {
       setUser(null);
+      setAccessToken(null);
     } finally {
       setLoading(false);
     }
@@ -24,18 +25,21 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const res = await api.post("/auth/login", { email, password });
+    setAccessToken(res.data.data.accessToken);
     setUser(res.data.data.user);
     return res.data.data.user;
   };
 
   const register = async (payload) => {
     const res = await api.post("/auth/register", payload);
+    setAccessToken(res.data.data.accessToken);
     setUser(res.data.data.user);
     return res.data.data.user;
   };
 
   const logout = async () => {
     await api.post("/auth/logout");
+    setAccessToken(null);
     setUser(null);
   };
 
