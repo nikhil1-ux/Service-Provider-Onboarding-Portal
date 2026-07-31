@@ -20,12 +20,11 @@ const Home = () => {
     return <Navigate to="/login" replace />;
   }
 
-  return (
-    <Navigate 
-      to={user.role === "admin" ? "/admin" : "/provider"} 
-      replace 
-    />
-  );
+  if (user.role === "admin") return <Navigate to="/admin" replace />;
+  if (user.role === "provider") return <Navigate to="/provider" replace />;
+
+  // Unknown/invalid role — don't loop, send to login
+  return <Navigate to="/login" replace />;
 };
 
 
