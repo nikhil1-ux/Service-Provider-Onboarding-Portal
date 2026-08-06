@@ -22,7 +22,7 @@ const generateTokens = async (user) => {
 };
 
 export const register = asyncHandler(async (req, res) => {
-  const { name, email, password, phone } = req.body;
+  const { name, role, email, password, phone } = req.body;
 
   if (!name || !email || !password) {
     throw new ApiError(400, "Name, email and password are required");
@@ -38,7 +38,7 @@ export const register = asyncHandler(async (req, res) => {
     email,
     password,
     phone,
-    role: "provider",
+    role,
     applicationStatus: "incomplete",
   });
 
